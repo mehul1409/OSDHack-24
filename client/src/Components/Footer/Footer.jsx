@@ -24,9 +24,9 @@ function Footer() {
         <div className="footer-social">
           <h3>Find Us here</h3>
           <div className="social-icons">
-            <a href="https://www.facebook.com/Parola.LiteraryHub/"><i className="fa-brands fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/company/parola-the-literary-hub/"><i className="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/parola.literaryhub"><i className="fa-brands fa-instagram"></i></a>
+            <a href=""><i className="fa-brands fa-facebook"></i></a>
+            <a href=""><i className="fa-brands fa-linkedin"></i></a>
+            <a href=""><i className="fa-brands fa-instagram"></i></a>
           </div>
         </div>
       </div>

@@ -1,11 +1,13 @@
 import ExploreCard from '../Components/ExploreCard/ExploreCard'
 import About from '../Components/About/About';
+import Timeline from '../Components/Timeline/Timeline';
 
-const Layout = ()=>{
-    return(
+const Layout = () => {
+    return (
         <>
-        <About />
-        <ExploreCard />
+            <About />
+            <ExploreCard />
+            <Timeline />
         </>
     )
 }
