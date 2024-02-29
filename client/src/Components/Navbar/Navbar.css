@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;600&family=Montserrat:wght@500;700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@500&family=Rubik:wght@300;400;500;700&family=Ysabeau+SC:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.hamburger {
+    position: absolute;
+    top: 10%;
+    right: 6%;
+    display: none;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 2px;
+    margin-top: 8px;
+    background-color: white;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding:0 3%;
+}
+
+.navBar .clubName {
+    font-size: 2.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: #FFC72C;
+}
+
+.navbar-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar a {
+    color: #FFC72C;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 10px;
+    font-weight: 400;
+    padding: 1px 4px;
+    transition: 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.navBar a:hover {
+    background-color: #495E57;
+    transform: scale(1.05);
+    border-radius: 13px;
+    color: white;
+    font-weight: 400;
+    padding: 1px 8px;
+    text-decoration: none;
+}
+
+.hline1 {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    margin: auto;
+}
+
+
+.hline2 {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    margin: auto;
+    display: none;
+
+}
+
+
+@media only screen and (max-width:1160px) {
+    .navBar a {
+        margin: 0 6px;
+        font-size: 1.1rem;
+    }
+
+    .navBar {
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width:850px) {
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        height: 40px;
+    }
+
+    .navbar-fixed {
+        width: 100vw;
+        height: 50px;
+    }
+
+    .navBar {
+        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        height: 50px;
+        backdrop-filter: blur(10px);
+    }
+
+    .navBar .clubName {
+        position: absolute;
+        top: 0;
+        left: 6%;
+        height: 50px;
+        color: #FFC72C;
+    }
+
+    .navbar-items {
+        flex-direction: column;
+        background-color: black;
+        width: 100%;
+        padding: 20%;
+        margin-top: -2500px;
+        transition: all 0.8s ease-in-out;
+        border-bottom-right-radius: 15%;
+        border-bottom-left-radius: 15%;
+    }
+
+    .mobilemenu {
+        margin-top: 80%;
+    }
+
+    .navBar a {
+        margin-top: 12%;
+        font-weight: 500;
+    }
+
+    .navBar a:hover {
+        background-color: #9e1b32;
+        padding: 1px 10px;
+        color: white;
+    }
+}
+
+@media only screen and (max-width:520px) {
+
+    .hline1 {
+        width: 80%;
+    }
+
+    .hline2 {
+        width: 80%;
+        display:block;
+
+    }
+
+    .hamburger {
+        top: 0;
+    }
+
+    .navBar {
+        height: 35px;
+    }
+
+    .navBar .clubName {
+        font-size: 1.5rem;
+    }
+}
+

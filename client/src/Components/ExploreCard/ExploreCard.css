@@ -1,0 +1,68 @@
+.exploreheading {
+  margin: auto;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-weight: 600;
+  padding: 0px 40px;
+  color: black;
+  width: fit-content;
+}
+
+.explore{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3%;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 5px solid #FFC531;
+  padding: 0.6rem;
+  width: 250px;
+  height: 300px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  list-style: none;
+  color:whitesmoke;
+  font-size: 1.3rem;
+}
+
+.title{
+  text-align: center;
+}
+
+.card:nth-child(1) {
+  background-image: url("../../assets/exploreProgramme1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.card:nth-child(2) {
+  background-image: url("../../assets/exploreProgramme1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.card:nth-child(3) {
+  background-image: url("../../assets/exploreProgramme1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card:nth-child(4) {
+  background-image: url("../../assets/exploreProgramme1.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
