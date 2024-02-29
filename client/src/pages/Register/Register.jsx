@@ -8,7 +8,7 @@ const Register = () => {
     const collectData = async (e)=>{
         e.preventDefault();
         console.log(name,email);
-        let result = await fetch('http://localhost:8000/',{
+        let result = await fetch('https://osdhack-23.onrender.com/',{
             method:'post',
             body:JSON.stringify({name,email}),
             headers:{
