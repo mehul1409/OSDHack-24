@@ -1,8 +1,24 @@
 const mongoose = require('mongoose');
 
 const participants = new mongoose.Schema({
-    name:String,
-    email:String,
-});
+    // teamName:{
+    //     type:String,
+    //     required:true,
+    // },
+    // teamLeaderName:{
+    //     type:String,
+    //     required:true,
+    // },
+    // personalEmailTeamLeader:{
+    //     type:String,
+    //     required:true,
+    //     unique:true,
+    // }
 
-module.exports = mongoose.model("participants",participants);
+    teamName:String,
+    teamLeaderName:String,
+    personalEmailTeamLeader:String,
+});
+const Participants = mongoose.model("Participants",participants);
+
+module.exports=Participants;
