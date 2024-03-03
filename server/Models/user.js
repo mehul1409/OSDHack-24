@@ -12,7 +12,6 @@ const participants = new mongoose.Schema({
     personalEmailTeamLeader: {
         type: String,
         required: true,
-        unique: true,
     },
     teamLeaderContactNumber: {
         type: Number,
@@ -37,7 +36,6 @@ const participants = new mongoose.Schema({
     member1Email: {
         type: String,
         required: true,
-        unique: true,
     },
     member1ContactNumber: {
         type: Number,
@@ -60,7 +58,6 @@ const participants = new mongoose.Schema({
     },
     member2Email: {
         type: String,
-        unique: true,
     },
     member2ContactNumber: {
         type: Number,
@@ -79,7 +76,6 @@ const participants = new mongoose.Schema({
     },
     member3Email: {
         type: String,
-        unique: true,
     },
     member3ContactNumber: {
         type: Number,

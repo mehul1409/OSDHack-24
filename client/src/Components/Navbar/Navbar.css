@@ -168,6 +168,10 @@
         height: 35px;
     }
 
+    .navbar-fixed{
+        height:40px;
+    }
+
     .navBar .clubName {
         font-size: 1.5rem;
     }

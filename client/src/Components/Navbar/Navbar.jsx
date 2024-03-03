@@ -29,7 +29,7 @@ const Homepage = ({ openMyComponent }) => {
                     <div
                         className={`navbar-items ${isMobileMenuOpen ? "mobilemenu" : ""}`}
                     >
-                        <a href="#home" onClick={closeMobileMenu}>HOME</a>
+                        <Link to='/' onClick={closeMobileMenu}>HOME</Link>
                         <a href="#about" onClick={closeMobileMenu}>ABOUT</a>
                         <a href="#contactus" onClick={closeMobileMenu}>CONTACT US</a>
                         <a href="#contactus" onClick={closeMobileMenu}>GALLERY</a>
