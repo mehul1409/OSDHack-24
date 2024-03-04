@@ -31,27 +31,21 @@ const participants = new mongoose.Schema({
     },
     member1Name: {
         type: String,
-        required: true,
     },
     member1Email: {
         type: String,
-        required: true,
     },
     member1ContactNumber: {
         type: Number,
-        required: true,
     },
     member1College: {
         type: String,
-        required: true,
     },
     member1Year: {
         type: Number,
-        required: true,
     },
     member1CollegeIdCardLink:{
         type:String,
-        required:true,
     },
     member2Name: {
         type: String,

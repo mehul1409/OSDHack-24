@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Register.css'
+import { IoMdStar } from "react-icons/io";
 
 const Register = () => {
     const [teamName, setteamName] = useState("");
@@ -75,61 +76,63 @@ const Register = () => {
         }
 
         if (!teamLeaderYear) {
-            seterror("Year is required!");
+            seterror("Team Leader Year is required!");
             return false;
         }
 
         if (!member1Name.trim()) {
             seterror("Member 1 name is required!");
             return false;
-          }
-        
-          if (!member1Email.trim()) {
+        }
+
+        if (!member1Email.trim()) {
             seterror("Member 1 email is required!");
             return false;
-          } else {
+        } else {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(member1Email)) {
-              seterror("Invalid Member 1 email format");
-              return false;
+                seterror("Invalid Member 1 email format");
+                return false;
             }
-          }
-        
-          if (!member1ContactNumber.trim()) {
+        }
+
+        if (!member1ContactNumber.trim()) {
             seterror("Member 1 WhatsApp contact number is required!");
             return false;
-          } else {
+        } else {
             const phoneRegex = /^\d{10}$/;
             if (!phoneRegex.test(member1ContactNumber)) {
-              seterror("Invalid Member 1 WhatsApp contact number format");
-              return false;
+                seterror("Invalid Member 1 WhatsApp contact number format");
+                return false;
             }
-          }
-        
-          if (!member1College.trim()) {
+        }
+
+        if (!member1College.trim()) {
             seterror("Member 1 college name is required!");
             return false;
-          }
-        
-          if (!member1CollegeIdCardLink.trim()) {
+        }
+
+        if (!member1CollegeIdCardLink.trim()) {
             seterror("Member 1 drive link of ID card is required!");
             return false;
-          }
-        
-          if (!member1Year) {
+        }
+
+        if (!member1Year) {
             seterror("Member 1 year is required!");
             return false;
-          }
+        }
 
         return true;
     };
 
     const scrollToTop = () => {
         window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
+            top: 0,
+            behavior: 'smooth',
         });
-      };
+    };
+
+    const suffix = ['st', 'nd', 'rd', 'th', 'th(Integrated)'];
 
     const collectData = async (e) => {
         e.preventDefault();
@@ -147,7 +150,6 @@ const Register = () => {
                     },
                 });
 
-                setSuccessMessage("Form Submitted Successfully!");
 
                 const resultData = await result.json();
                 console.log(resultData);
@@ -179,13 +181,13 @@ const Register = () => {
                 setmember3CollegeIdCardLink("");
                 seterror("");
 
+                setSuccessMessage("Form Submitted Successfully!");
+
             } catch (error) {
                 console.error('Error submitting data:', error);
             };
         }
-
     }
-
 
     return (
         <>
@@ -196,7 +198,7 @@ const Register = () => {
 
                     <div className='memberheading'>TEAM LEADER DETAILS</div>
                     <div className="form-group">
-                        <label htmlFor="teamName">Team Name</label>
+                        <label htmlFor="teamName">Team Name <IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="teamName" placeholder="Enter Team Name:"
                             value={teamName}
                             onChange={(e) => {
@@ -205,154 +207,106 @@ const Register = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="teamLeaderName">Team Leader Name:</label>
+                        <label htmlFor="teamLeaderName">Team Leader Name:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="teamLeaderName" placeholder="Enter Team Leader Name"
                             value={teamLeaderName}
                             onChange={(e) => setteamLeaderName(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="personalEmailTeamLeader">Personal Email:</label>
+                        <label htmlFor="personalEmailTeamLeader">Personal Email:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="email" className="form-control" id="personalEmailTeamLeader" placeholder="Enter Team Leader Mail:"
                             value={personalEmailTeamLeader}
                             onChange={(e) => setpersonalEmailTeamLeader(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="teamLeaderContactNumber">Whatsapp Contact No.:</label>
+                        <label htmlFor="teamLeaderContactNumber">Whatsapp Contact No.:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="teamLeaderContactNumber" placeholder="Enter Team Leader Whatsapp No.:"
                             value={teamLeaderContactNumber}
                             onChange={(e) => setteamLeaderContactNumber(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="teamLeaderCollege">College Name:</label>
+                        <label htmlFor="teamLeaderCollege">College Name:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="teamLeaderCollege" placeholder="Enter College Name:"
                             value={teamLeaderCollege}
                             onChange={(e) => setteamLeaderCollege(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="teamLeaderCollegeIdCardLink">Drive Link Of Id card:</label>
+                        <label htmlFor="teamLeaderCollegeIdCardLink">Drive Link Of Id card:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="teamLeaderCollegeIdCardLink" placeholder="Drive Link Of Id card:"
                             value={teamLeaderCollegeIdCardLink}
                             onChange={(e) => setteamLeaderCollegeIdCardLink(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                    <label>Year:</label>
-                        <div className='year'>
-                        <input type="radio" className="form-control" id="teamLeaderYear1" placeholder="Enter Year:"
-                            name='teamLeaderYear'
-                            value='1'
-                            onChange={(e) => setteamLeaderYear(e.target.value)} />
-                            <label htmlFor="teamLeaderYear1">1st</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="teamLeaderYear2" placeholder="Enter Year:"
-                            name='teamLeaderYear'
-                            value="2"
-                            onChange={(e) => setteamLeaderYear(e.target.value)} />
-                        <label htmlFor="teamLeaderYear2">2nd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="teamLeaderYear3" placeholder="Enter Year:"
-                            name='teamLeaderYear'
-                            value="3"
-                            onChange={(e) => setteamLeaderYear(e.target.value)} />
-                        <label htmlFor="teamLeaderYear3">3rd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="teamLeaderYear4" placeholder="Enter Year:"
-                            name='teamLeaderYear'
-                            value="4"
-                            onChange={(e) => setteamLeaderYear(e.target.value)} />
-                        <label htmlFor="teamLeaderYear4">4th</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="teamLeaderYear5" placeholder="Enter Year:"
-                            name='teamLeaderYear'
-                            value="5"
-                            onChange={(e) => setteamLeaderYear(e.target.value)} />
-                        <label htmlFor="teamLeaderYear5">5th(Integrated)</label>
-                        </div>
+                        <label>Year:<IoMdStar className='compulsoryIcon' /></label>
+                        {
+                            [1, 2, 3, 4, 5].map((item, index) => (
+                                <div className='year' key={index}>
+                                    <input type="radio" className="form-control" id={`teamLeaderYear${item}`} placeholder="Enter Year:"
+                                        name='teamLeaderYear'
+                                        value={item}
+                                        onChange={(e) => setteamLeaderYear(e.target.value)} />
+                                    <label htmlFor={`teamLeaderYear${item}`}>{`${item}${suffix[index]}`}</label>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
 
                 <div className="member1">
                     <div className='memberheading'>MEMBER 1 DETAILS</div>
                     <div className="form-group">
-                        <label htmlFor="member1Name">Member 1 Name:</label>
+                        <label htmlFor="member1Name">Member 1 Name:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="member1Name" placeholder="Enter Member 1 Name"
                             value={member1Name}
                             onChange={(e) => setmember1Name(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="member1Email">Personal Email:</label>
+                        <label htmlFor="member1Email">Personal Email:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="email" className="form-control" id="member1Email" placeholder="Enter Member 1 Mail:"
                             value={member1Email}
                             onChange={(e) => setmember1Email(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="member1ContactNumber">Whatsapp Contact No.:</label>
+                        <label htmlFor="member1ContactNumber">Whatsapp Contact No.:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="member1ContactNumber" placeholder="Enter Member 1 Whatsapp No.:"
                             value={member1ContactNumber}
                             onChange={(e) => setmember1ContactNumber(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="member1College">College Name:</label>
+                        <label htmlFor="member1College">College Name:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="member1College" placeholder="Enter College Name:"
                             value={member1College}
                             onChange={(e) => setmember1College(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="member1CollegeIdCardLink">Drive Link Of Id card:</label>
+                        <label htmlFor="member1CollegeIdCardLink">Drive Link Of Id card:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="text" className="form-control" id="member1CollegeIdCardLink" placeholder="Drive Link Of Id card:"
                             value={member1CollegeIdCardLink}
                             onChange={(e) => setmember1CollegeIdCardLink(e.target.value)} />
                     </div>
 
                     <div className="form-group">
-                        <label>Year:</label><br />
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year1" placeholder="Enter Year:"
-                            name='member1Year'
-                            value="1"
-                            onChange={(e) => setmember1Year(e.target.value)} />
-                        <label htmlFor="member1Year1">1st</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year2" placeholder="Enter Year:"
-                            name='member1Year'
-                            value="2"
-                            onChange={(e) => setmember1Year(e.target.value)} />
-                        <label htmlFor="member1Year2">2nd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year3" placeholder="Enter Year:"
-                            name='member1Year'
-                            value="3"
-                            onChange={(e) => setmember1Year(e.target.value)} />
-                        <label htmlFor="member1Year3">3rd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year4" placeholder="Enter Year:"
-                            name='member1Year'
-                            value="4"
-                            onChange={(e) => setmember1Year(e.target.value)} />
-                        <label htmlFor="member1Year4">4th</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year5" placeholder="Enter Year:"
-                            name='member1Year'
-                            value="5"
-                            onChange={(e) => setmember1Year(e.target.value)} />
-                        <label htmlFor="member1Year5">5th(Integrated)</label>
-                        </div>
+                        <label>Year:<IoMdStar className='compulsoryIcon' /></label>
+                        {
+                            [1, 2, 3, 4, 5].map((item, index) => (
+                                <div className="year" key={index}>
+                                    <input type="radio" className="form-control" id={`member1Year${item}`} placeholder="Enter Year:"
+                                        name='member1Year'
+                                        value={`${item}`}
+                                        onChange={(e) => setmember1Year(e.target.value)} />
+                                    <label htmlFor={`member1Year${item}`}>{`${item}${suffix[index]}`}</label>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
 
@@ -395,41 +349,17 @@ const Register = () => {
 
                     <div className="form-group">
                         <label>Year:</label>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member1Year1" placeholder="Enter Year:"
-                            name='member2Year'
-                            value="1"
-                            onChange={(e) => setmember2Year(e.target.value)} />
-                        <label htmlFor="member2Year1">1st</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member2Year2" placeholder="Enter Year:"
-                            name='member2Year'
-                            value="2"
-                            onChange={(e) => setmember2Year(e.target.value)} />
-                        <label htmlFor="member2Year2">2nd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member2Year3" placeholder="Enter Year:"
-                            name='member2Year'
-                            value="3"
-                            onChange={(e) => setmember2Year(e.target.value)} />
-                        <label htmlFor="member2Year3">3rd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member2Year4" placeholder="Enter Year:"
-                            name='member2Year'
-                            value="4"
-                            onChange={(e) => setmember2Year(e.target.value)} />
-                        <label htmlFor="member2Year4">4th</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member2Year5" placeholder="Enter Year:"
-                            name='member2Year'
-                            value="5"
-                            onChange={(e) => setmember2Year(e.target.value)} />
-                        <label htmlFor="member2Year5">5th(Integrated)</label>
-                        </div>
+                        {
+                            [1, 2, 3, 4, 5].map((item, index) => (
+                                <div className="year" key={index}>
+                                    <input type="radio" className="form-control" id={`member2Year${item}`} placeholder="Enter Year:"
+                                        name='member2Year'
+                                        value={`${item}`}
+                                        onChange={(e) => setmember2Year(e.target.value)} />
+                                    <label htmlFor={`member2Year${item}`}>{`${item}${suffix[index]}`}</label>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
 
@@ -469,42 +399,18 @@ const Register = () => {
                             onChange={(e) => setmember3CollegeIdCardLink(e.target.value)} />
                     </div>
                     <div className="form-group">
-                        <label>Year:</label><br />
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member3Year1" placeholder="Enter Year:"
-                            name='member3Year'
-                            value="1"
-                            onChange={(e) => setmember3Year(e.target.value)} />
-                        <label htmlFor="member3Year2">1st</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member3Year2" placeholder="Enter Year:"
-                            name='member3Year'
-                            value="2"
-                            onChange={(e) => setmember3Year(e.target.value)} />
-                        <label htmlFor="member3Year2">2nd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member3Year3" placeholder="Enter Year:"
-                            name='member3Year'
-                            value="3"
-                            onChange={(e) => setmember3Year(e.target.value)} />
-                        <label htmlFor="member3Year3">3rd</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member3Year4" placeholder="Enter Year:"
-                            name='member3Year'
-                            value="4"
-                            onChange={(e) => setmember3Year(e.target.value)} />
-                        <label htmlFor="member3Year4">4th</label>
-                        </div>
-                        <div className="year">
-                        <input type="radio" className="form-control" id="member3Year5" placeholder="Enter Year:"
-                            name='member3Year'
-                            value="5"
-                            onChange={(e) => setmember3Year(e.target.value)} />
-                        <label htmlFor="member3Year5">5th(Integrated)</label>
-                        </div>
+                        <label>Year:</label>
+                        {
+                            [1, 2, 3, 4, 5].map((item, index) => (
+                                <div className='year' key={index}>
+                                    <input type="radio" className="form-control" id={`member3Year${index + 1}`} placeholder="Enter Year:"
+                                        name='member3Year'
+                                        value={`${index + 1}`}
+                                        onChange={(e) => setmember3Year(e.target.value)} />
+                                    <label htmlFor={`member3Year${index + 1}`}>{`${item}${suffix[index]}`}</label>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
 

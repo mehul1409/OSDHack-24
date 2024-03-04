@@ -107,6 +107,7 @@
     margin: 3% 2%;
     padding: 2% 1%;
     border-radius: 10px;
+    font-size: 1.2rem;
 }
 
 .form-group input {
@@ -114,6 +115,11 @@
     border-bottom: 1px solid black;
     width: 80%;
     margin-top: 2%;
+    font-size: 1.1rem;
+}
+
+.form-group input:focus {
+    outline: none;
 }
 
 .form-group .year input[type='radio']{
@@ -122,4 +128,10 @@
 
 .form-group .year label{
     margin-left:2%;
+}
+
+.compulsoryIcon{
+    font-size: 1rem;
+    color:rgb(223, 19, 19);
+    margin-bottom: 0.3%;
 }
