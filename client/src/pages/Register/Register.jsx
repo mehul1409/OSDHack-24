@@ -169,24 +169,21 @@ const Register = () => {
             console.log('Form validation failed');
             return;
         } else {
-            const EmailVerified = await checkEmail();
-
-            if(EmailVerified){
-                seterror("Email Already Exists");
-            }else{
+            const existuseremail = await checkEmail();
+            if (!existuseremail) {
                 try {
-                    let result = await fetch('https://osdhack-23.onrender.com/', {
+                    let result = await fetch('http://localhost:8000/', {
                         method: 'post',
                         body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
                         headers: {
                             'Content-Type': 'application/json',
                         },
                     });
-    
-    
+
+
                     const resultData = await result.json();
                     console.log(resultData);
-    
+
                     setteamName("");
                     setteamLeaderName("");
                     setpersonalEmailTeamLeader("");
@@ -213,33 +210,36 @@ const Register = () => {
                     setmember3Year("");
                     setmember3CollegeIdCardLink("");
                     seterror("");
-    
+
                     setSuccessMessage("Form Submitted Successfully!");
-    
+
                     setTimeout(() => {
                         setSuccessMessage("");
                     }, 10000);
-    
+
                 } catch (error) {
                     console.error('Error submitting data:', error);
                 };
+            } else {
+                seterror(data.errormessage)
             }
         }
     }
 
     const checkEmail = async () => {
         try {
-            const response = await fetch('https://osdhack-23.onrender.com/checkEmail', {
+            const response = await fetch('http://localhost:8000/checkEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ member1Email }),
+                body: JSON.stringify({ personalEmailTeamLeader, member1Email, member2Email, member3Email }),
             });
 
             const data = await response.json();
+            console.log(data);
 
-            if (data) {
+            if (data.exists) {
                 return true;
             } else {
                 return false;
@@ -248,6 +248,7 @@ const Register = () => {
 
         } catch (error) {
             console.error('Error checking email:', error);
+            return false;
         }
     };
 
