@@ -22,6 +22,24 @@ app.post('/', async (req, res) => {
   }
 });
 
+app.post('/checkEmail', async (req, res) => {
+  const { member1Email } = req.body;
+
+  try {
+    const user = await users.findOne({ member1Email });
+    console.log(user);
+
+    if (user) {
+      res.json({ exists: true });
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, (err) => {
   if (err) {

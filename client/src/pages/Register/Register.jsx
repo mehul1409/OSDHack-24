@@ -96,6 +96,11 @@ const Register = () => {
             }
         }
 
+        if (member1Email === personalEmailTeamLeader) {
+            seterror("Member 1 Email is Same Email As Team Leader");
+            return false;
+        }
+
         if (!member1ContactNumber.trim()) {
             seterror("Member 1 WhatsApp contact number is required!");
             return false;
@@ -122,6 +127,29 @@ const Register = () => {
             return false;
         }
 
+        if (member2Email.trim() > 0) {
+            if (member2Email === personalEmailTeamLeader) {
+                seterror("Member 2 Email is Same Email As Team Leader");
+                return false;
+            } else if (member3Email === member2Email) {
+                seterror("Member 2 Email is Same Email As Member 1");
+                return false;
+            }
+        }
+
+        if (member3Email.trim() > 0) {
+            if (member3Email === personalEmailTeamLeader) {
+                seterror("Member 3 Email is Same Email As Team Leader");
+                return false;
+            } else if (member3Email === member1Email) {
+                seterror("Member 3 Email is Same Email As Member 1");
+                return false;
+            } else if (member3Email === member2Email) {
+                seterror("Member 3 Email is Same Email As Member 2");
+                return false;
+            }
+        }
+
         return true;
     };
 
@@ -141,53 +169,87 @@ const Register = () => {
             console.log('Form validation failed');
             return;
         } else {
-            try {
-                let result = await fetch('https://osdhack-23.onrender.com', {
-                    method: 'post',
-                    body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+            const EmailVerified = await checkEmail();
 
-
-                const resultData = await result.json();
-                console.log(resultData);
-
-                setteamName("");
-                setteamLeaderName("");
-                setpersonalEmailTeamLeader("");
-                setteamLeaderContactNumber("");
-                setteamLeaderCollege("");
-                setteamLeaderYear("");
-                setteamLeaderCollegeIdCardLink("");
-                setmember1Name("");
-                setmember1Email("");
-                setmember1ContactNumber("");
-                setmember1College("");
-                setmember1Year("");
-                setmember1CollegeIdCardLink("");
-                setmember2Name("");
-                setmember2Email("");
-                setmember2ContactNumber("");
-                setmember2College("");
-                setmember2Year("");
-                setmember2CollegeIdCardLink("");
-                setmember3Name("");
-                setmember3Email("");
-                setmember3ContactNumber("");
-                setmember3College("");
-                setmember3Year("");
-                setmember3CollegeIdCardLink("");
-                seterror("");
-
-                setSuccessMessage("Form Submitted Successfully!");
-
-            } catch (error) {
-                console.error('Error submitting data:', error);
-            };
+            if(EmailVerified){
+                seterror("Email Already Exists");
+            }else{
+                try {
+                    let result = await fetch('https://osdhack-23.onrender.com/', {
+                        method: 'post',
+                        body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+    
+    
+                    const resultData = await result.json();
+                    console.log(resultData);
+    
+                    setteamName("");
+                    setteamLeaderName("");
+                    setpersonalEmailTeamLeader("");
+                    setteamLeaderContactNumber("");
+                    setteamLeaderCollege("");
+                    setteamLeaderYear("");
+                    setteamLeaderCollegeIdCardLink("");
+                    setmember1Name("");
+                    setmember1Email("");
+                    setmember1ContactNumber("");
+                    setmember1College("");
+                    setmember1Year("");
+                    setmember1CollegeIdCardLink("");
+                    setmember2Name("");
+                    setmember2Email("");
+                    setmember2ContactNumber("");
+                    setmember2College("");
+                    setmember2Year("");
+                    setmember2CollegeIdCardLink("");
+                    setmember3Name("");
+                    setmember3Email("");
+                    setmember3ContactNumber("");
+                    setmember3College("");
+                    setmember3Year("");
+                    setmember3CollegeIdCardLink("");
+                    seterror("");
+    
+                    setSuccessMessage("Form Submitted Successfully!");
+    
+                    setTimeout(() => {
+                        setSuccessMessage("");
+                    }, 10000);
+    
+                } catch (error) {
+                    console.error('Error submitting data:', error);
+                };
+            }
         }
     }
+
+    const checkEmail = async () => {
+        try {
+            const response = await fetch('https://osdhack-23.onrender.com/checkEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ member1Email }),
+            });
+
+            const data = await response.json();
+
+            if (data) {
+                return true;
+            } else {
+                return false;
+
+            }
+
+        } catch (error) {
+            console.error('Error checking email:', error);
+        }
+    };
 
     return (
         <>
