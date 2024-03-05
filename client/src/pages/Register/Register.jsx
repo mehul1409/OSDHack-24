@@ -172,7 +172,7 @@ const Register = () => {
             const existuseremail = await checkEmail();
             if (!existuseremail) {
                 try {
-                    let result = await fetch('http://localhost:8000/', {
+                    let result = await fetch('https://osdhack-23.onrender.com/', {
                         method: 'post',
                         body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
                         headers: {
@@ -226,7 +226,7 @@ const Register = () => {
 
     const checkEmail = async () => {
         try {
-            const response = await fetch('http://localhost:8000/checkEmail', {
+            const response = await fetch('https://osdhack-23.onrender.com/checkEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
