@@ -26,7 +26,7 @@ app.post('/checkEmail', async (req, res) => {
   const { member1Email } = req.body;
 
   try {
-    const user = await users.findOne({ member1Email });
+    const user = await users.find({ member1Email : 1 , _id:0 });
     console.log(user);
 
     if (user) {
