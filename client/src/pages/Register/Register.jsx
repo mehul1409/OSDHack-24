@@ -127,28 +127,28 @@ const Register = () => {
             return false;
         }
 
-        if (member2Email.trim() > 0) {
-            if (member2Email === personalEmailTeamLeader) {
-                seterror("Member 2 Email is Same Email As Team Leader");
-                return false;
-            } else if (member3Email === member2Email) {
-                seterror("Member 2 Email is Same Email As Member 1");
-                return false;
-            }
-        }
+        // if (member2Email.trim() > 0) {
+        //     if (member2Email === personalEmailTeamLeader) {
+        //         seterror("Member 2 Email is Same Email As Team Leader");
+        //         return false;
+        //     } else if (member3Email === member2Email) {
+        //         seterror("Member 2 Email is Same Email As Member 1");
+        //         return false;
+        //     }
+        // }
 
-        if (member3Email.trim() > 0) {
-            if (member3Email === personalEmailTeamLeader) {
-                seterror("Member 3 Email is Same Email As Team Leader");
-                return false;
-            } else if (member3Email === member1Email) {
-                seterror("Member 3 Email is Same Email As Member 1");
-                return false;
-            } else if (member3Email === member2Email) {
-                seterror("Member 3 Email is Same Email As Member 2");
-                return false;
-            }
-        }
+        // if (member3Email.trim() > 0) {
+        //     if (member3Email === personalEmailTeamLeader) {
+        //         seterror("Member 3 Email is Same Email As Team Leader");
+        //         return false;
+        //     } else if (member3Email === member1Email) {
+        //         seterror("Member 3 Email is Same Email As Member 1");
+        //         return false;
+        //     } else if (member3Email === member2Email) {
+        //         seterror("Member 3 Email is Same Email As Member 2");
+        //         return false;
+        //     }
+        // }
 
         return true;
     };
@@ -220,8 +220,6 @@ const Register = () => {
                 } catch (error) {
                     console.error('Error submitting data:', error);
                 };
-            } else {
-                seterror(data.errormessage)
             }
         }
     }
@@ -240,11 +238,16 @@ const Register = () => {
             console.log(data);
 
             if (data.exists) {
+                seterror(data.errorMessage);
+
+                setTimeout(() => {
+                    seterror("");
+                }, 5000);
                 return true;
             } else {
                 return false;
-
             }
+
 
         } catch (error) {
             console.error('Error checking email:', error);

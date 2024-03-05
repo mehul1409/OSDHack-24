@@ -29,6 +29,8 @@ app.post('/', async (req, res) => {
 app.post('/checkEmail', async (req, res) => {
   const { personalEmailTeamLeader, member1Email, member2Email, member3Email } = req.body;
 
+  console.log(personalEmailTeamLeader, member1Email, member2Email, member3Email);
+
   try {
     const existingUser = await users.findOne({
       $or: [
@@ -38,6 +40,8 @@ app.post('/checkEmail', async (req, res) => {
         { member3Email }
       ]
     });
+
+    console.log(existingUser);
 
     if (existingUser) {
       let errorMessage = '';
@@ -51,10 +55,10 @@ app.post('/checkEmail', async (req, res) => {
       }
 
       if (existingUser.member3Email === member1Email || existingUser.member3Email === member2Email || existingUser.member3Email === member3Email || existingUser.member3Email === personalEmailTeamLeader) {
-        errorMessage = 'Member 1 Email is already taken!';
+        errorMessage = 'Member 3 Email is already taken!';
       }
 
-      if(existingUser.personalEmailTeamLeader === personalEmailTeamLeader || existingUser.personalEmailTeamLeader === member1Email || existingUser.personalEmailTeamLeader === member2Email || existingUser.personalEmailTeamLeader === member3Email){
+      if (existingUser.personalEmailTeamLeader === personalEmailTeamLeader || existingUser.personalEmailTeamLeader === member1Email || existingUser.personalEmailTeamLeader === member2Email || existingUser.personalEmailTeamLeader === member3Email) {
         errorMessage = "Team Leader Id already taken!"
       }
 
