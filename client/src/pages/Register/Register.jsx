@@ -127,28 +127,31 @@ const Register = () => {
             return false;
         }
 
-        // if (member2Email.trim() > 0) {
-        //     if (member2Email === personalEmailTeamLeader) {
-        //         seterror("Member 2 Email is Same Email As Team Leader");
-        //         return false;
-        //     } else if (member3Email === member2Email) {
-        //         seterror("Member 2 Email is Same Email As Member 1");
-        //         return false;
-        //     }
-        // }
+        if (member2Email.trim()) {
 
-        // if (member3Email.trim() > 0) {
-        //     if (member3Email === personalEmailTeamLeader) {
-        //         seterror("Member 3 Email is Same Email As Team Leader");
-        //         return false;
-        //     } else if (member3Email === member1Email) {
-        //         seterror("Member 3 Email is Same Email As Member 1");
-        //         return false;
-        //     } else if (member3Email === member2Email) {
-        //         seterror("Member 3 Email is Same Email As Member 2");
-        //         return false;
-        //     }
-        // }
+            if (member2Email === personalEmailTeamLeader) {
+                seterror("Member 2 Email is Same Email As Team Leader");
+                return false;
+            } else if (member2Email === member1Email) {
+                seterror("Member 2 Email is Same Email As Member 1");
+                return false;
+            }
+        }
+
+        if (member3Email.trim() > 0) {
+
+            console.log(member2Email);
+            if (member3Email === personalEmailTeamLeader) {
+                seterror("Member 3 Email is Same Email As Team Leader");
+                return false;
+            } else if (member3Email === member1Email) {
+                seterror("Member 3 Email is Same Email As Member 1");
+                return false;
+            } else if (member3Email === member2Email) {
+                seterror("Member 3 Email is Same Email As Member 2");
+                return false;
+            }
+        }
 
         return true;
     };
@@ -169,9 +172,11 @@ const Register = () => {
             console.log('Form validation failed');
             return;
         } else {
-            const existuseremail = await checkEmail();
-            if (!existuseremail) {
-                try {
+            // const existuseremail = await checkEmail();
+            // if (!existuseremail) {
+            // }
+
+            try {
                     let result = await fetch('https://osdhack-23.onrender.com/', {
                         method: 'post',
                         body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
@@ -220,40 +225,39 @@ const Register = () => {
                 } catch (error) {
                     console.error('Error submitting data:', error);
                 };
-            }
         }
     }
 
-    const checkEmail = async () => {
-        try {
-            const response = await fetch('https://osdhack-23.onrender.com/checkEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ personalEmailTeamLeader, member1Email, member2Email, member3Email }),
-            });
+    // const checkEmail = async () => {
+    //     try {
+    //         const response = await fetch('http://localhost:8000/checkEmail', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ personalEmailTeamLeader, member1Email, member2Email, member3Email }),
+    //         });
 
-            const data = await response.json();
-            console.log(data);
+    //         const data = await response.json();
+    //         console.log(data);
 
-            if (data.exists) {
-                seterror(data.errorMessage);
+    //         if (data.exists) {
+    //             seterror(data.errorMessage);
 
-                setTimeout(() => {
-                    seterror("");
-                }, 5000);
-                return true;
-            } else {
-                return false;
-            }
+    //             setTimeout(() => {
+    //                 seterror("");
+    //             }, 5000);
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
 
 
-        } catch (error) {
-            console.error('Error checking email:', error);
-            return false;
-        }
-    };
+    //     } catch (error) {
+    //         console.error('Error checking email:', error);
+    //         return false;
+    //     }
+    // };
 
     return (
         <>

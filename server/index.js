@@ -26,51 +26,30 @@ app.post('/', async (req, res) => {
   }
 });
 
-app.post('/checkEmail', async (req, res) => {
-  const { personalEmailTeamLeader, member1Email, member2Email, member3Email } = req.body;
+// app.post('/checkEmail', async (req, res) => {
+//   const personalEmailTeamLeader = req.body.personalEmailTeamLeader;
+//   const member1Email = req.body.member1email;
+//   const member2Email = req.body.member2email;
+//   const member3Email = req.body.member3Email;
 
-  console.log(personalEmailTeamLeader, member1Email, member2Email, member3Email);
+//   try {
+//     const existingUsers = await users.find({
+//       $or: [{"member1Email":personalEmailTeamLeader},{"member1Email":member1Email},{"member1Email":member2Email},{"member1Email":member3Email},{"member2Email":personalEmailTeamLeader},{"member2Email":member1Email},{"member2Email":member2Email},{"member2Email":member3Email},{"member3Email":personalEmailTeamLeader},{"member3Email":member1Email},{"member3Email":member2Email},{"member3Email":member3Email}]
+//     }).count()>0;
 
-  try {
-    const existingUser = await users.findOne({
-      $or: [
-        { personalEmailTeamLeader },
-        { member1Email },
-        { member2Email },
-        { member3Email }
-      ]
-    });
+//     console.log(existingUsers);
 
-    console.log(existingUser);
-
-    if (existingUser) {
-      let errorMessage = '';
-
-      if (existingUser.member1Email === member1Email || existingUser.member1Email === member2Email || existingUser.member1Email === member3Email || existingUser.member1Email === personalEmailTeamLeader) {
-        errorMessage = 'Member 1 Email is already taken!';
-      }
-
-      if (existingUser.member2Email === member1Email || existingUser.member2Email === member2Email || existingUser.member2Email === member3Email || existingUser.member2Email === personalEmailTeamLeader) {
-        errorMessage = 'Member 2 Email is already taken!';
-      }
-
-      if (existingUser.member3Email === member1Email || existingUser.member3Email === member2Email || existingUser.member3Email === member3Email || existingUser.member3Email === personalEmailTeamLeader) {
-        errorMessage = 'Member 3 Email is already taken!';
-      }
-
-      if (existingUser.personalEmailTeamLeader === personalEmailTeamLeader || existingUser.personalEmailTeamLeader === member1Email || existingUser.personalEmailTeamLeader === member2Email || existingUser.personalEmailTeamLeader === member3Email) {
-        errorMessage = "Team Leader Id already taken!"
-      }
-
-      return res.json({ exists: true, errorMessage });
-    } else {
-      return res.json({ exists: false });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+//     if (existingUsers) {
+//       errorMessage="SomeEmail is Already exists!";
+//       return res.json({ exists: true, errorMessage });
+//     } else {
+//       return res.json({ exists: false });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
 
 
 const PORT = process.env.PORT || 8000;

@@ -1,8 +1,7 @@
 .exploreheading {
   margin: auto;
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3%;
+  font-size: 3.5rem;
   margin-top: 3%;
   font-weight: 600;
   padding: 0px 40px;
@@ -20,10 +19,17 @@
 .card {
   border: 5px solid #FFC531;
   padding: 0.6rem;
-  width: 250px;
-  height: 300px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
+  width: 200px;
+  height: 250px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin:3% 2%;
+  cursor: pointer;
+  transition:all 0.5s ease-in-out;
+}
+
+.card:hover{
+  transform: scale(1.1);
 }
 
 .content{
@@ -65,4 +71,29 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+@media only screen and (max-width:800px){
+  .exploreheading{
+    font-size: 2.4rem;
+  }
+  .card{
+    height:200px;
+    width:150px;
+  }
+
+  .content{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width:420px){
+  .card{
+    height:140px;
+    width:120px;
+  }
+
+  .content{
+    font-size: 0.8rem;
+  }
 }
