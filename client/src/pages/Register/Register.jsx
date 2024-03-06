@@ -31,6 +31,10 @@ const Register = () => {
 
     const [error, seterror] = useState();
     const [SuccessMessage, setSuccessMessage] = useState();
+    const [passwordErrorMember1, setpasswordErrorMember1] = useState();
+    const [passwordErrorMember2, setpasswordErrorMember2] = useState();
+    const [passwordErrorMember3, setpasswordErrorMember3] = useState();
+
 
     const validation = () => {
         if (!teamName.trim()) {
@@ -259,6 +263,35 @@ const Register = () => {
     //     }
     // };
 
+    const handlechange1 = (e) => {
+        setmember1Email(e.target.value);
+
+        if(e.target.value === personalEmailTeamLeader){
+            setpasswordErrorMember1("Member 1 Email is Same Email As Team Leader");
+        }else{
+            setpasswordErrorMember1("");
+        }
+    }
+
+    const handlechange2 = (e) => {
+        setmember2Email(e.target.value);
+
+        if(e.target.value === personalEmailTeamLeader || e.target.value === member1Email){
+            setpasswordErrorMember2("Member 2 Email is Same Email Another Team Member");
+        }else{
+            setpasswordErrorMember2("");
+        }
+    }
+
+    const handlechange3 = (e) => {
+        setmember3Email(e.target.value);
+
+        if(e.target.value === personalEmailTeamLeader || e.target.value === member1Email || e.target.value === member2Email){
+            setpasswordErrorMember3("Member 3 Email is Same Email Another Team Member");
+        }else{
+            setpasswordErrorMember3("");
+        }
+    }
     return (
         <>
             <form onSubmit={collectData} className='registrationform'>
@@ -340,7 +373,9 @@ const Register = () => {
                         <label htmlFor="member1Email">Personal Email:<IoMdStar className='compulsoryIcon' /></label>
                         <input type="email" className="form-control" id="member1Email" placeholder="Enter Member 1 Mail:"
                             value={member1Email}
-                            onChange={(e) => setmember1Email(e.target.value)} />
+                            onChange={handlechange1} />
+                    {passwordErrorMember1 && <div className='errormessage'>{passwordErrorMember1}</div>}
+
                     </div>
 
                     <div className="form-group">
@@ -393,7 +428,8 @@ const Register = () => {
                         <label htmlFor="member2Email">Personal Email:</label>
                         <input type="email" className="form-control" id="member2Email" placeholder="Enter Member 2 Mail:"
                             value={member2Email}
-                            onChange={(e) => setmember2Email(e.target.value)} />
+                            onChange={handlechange2} />
+                        {passwordErrorMember2 && <div className='errormessage'>{passwordErrorMember2}</div>}
                     </div>
 
                     <div className="form-group">
@@ -446,7 +482,8 @@ const Register = () => {
                         <label htmlFor="member3Email">Personal Email:</label>
                         <input type="email" className="form-control" id="member3Email" placeholder="Enter Member 3 Mail:"
                             value={member3Email}
-                            onChange={(e) => setmember3Email(e.target.value)} />
+                            onChange={handlechange3} />
+                        {passwordErrorMember3 && <div className='errormessage'>{passwordErrorMember3}</div>}
                     </div>
 
                     <div className="form-group">
