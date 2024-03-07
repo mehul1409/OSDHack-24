@@ -1,0 +1,150 @@
+<!-- views/data.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participants Details</title>
+    <style>
+        h1,p{
+            text-align: center;
+        }
+        p{
+            font-size: 3rem;
+            margin-top:5%;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #8e8d8d;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #bab8b8;
+        }
+
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Participants Details</h1>
+
+    <% if (data && data.length> 0) { %>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th colspan="7">TEAM LEADER</th>
+                    <th colspan="6">MEMBER 1</th>
+                    <th colspan="6">MEMBER 2</th>
+                    <th colspan="6">MEMBER 3</th>
+                </tr>
+                <tr>
+                    <th>Team Name</th>
+                    <% for (let i=1; i <=4; i++) { %>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Contact Number</th>
+                        <th>College</th>
+                        <th>Year</th>
+                        <th>Id card Link</th>
+                        <% } %>
+                </tr>
+            </thead>
+            <% data.forEach(item=> { %>
+                <tr>
+                    <td>
+                        <%= item.teamName %>
+                    </td>
+                    <td>
+                        <%= item.teamLeaderName %>
+                    </td>
+                    <td>
+                        <%= item.personalEmailTeamLeader %>
+                    </td>
+                    <td>
+                        <%= item.teamLeaderContactNumber %>
+                    </td>
+                    <td>
+                        <%= item.teamLeaderCollege %>
+                    </td>
+                    <td>
+                        <%= item.teamLeaderYear %>
+                    </td>
+                    <td>
+                        <%= item.teamLeaderCollegeIdCardLink %>
+                    </td>
+                    <td>
+                        <%= item.member1Name %>
+                    </td>
+                    <td>
+                        <%= item.member1Email %>
+                    </td>
+                    <td>
+                        <%= item.member1ContactNumber %>
+                    </td>
+                    <td>
+                        <%= item.member1College %>
+                    </td>
+                    <td>
+                        <%= item.member1Year %>
+                    </td>
+                    <td>
+                        <%= item.member1CollegeIdCardLink %>
+                    </td>
+                    <td>
+                        <%= item.member2Name %>
+                    </td>
+                    <td>
+                        <%= item.member2Email %>
+                    </td>
+                    <td>
+                        <%= item.member2ContactNumber %>
+                    </td>
+                    <td>
+                        <%= item.member2College %>
+                    </td>
+                    <td>
+                        <%= item.member2Year %>
+                    </td>
+                    <td>
+                        <%= item.member2CollegeIdCardLink %>
+                    </td>
+                    <td>
+                        <%= item.member3Name %>
+                    </td>
+                    <td>
+                        <%= item.member3Email %>
+                    </td>
+                    <td>
+                        <%= item.member3ContactNumber %>
+                    </td>
+                    <td>
+                        <%= item.member3College %>
+                    </td>
+                    <td>
+                        <%= item.member3Year %>
+                    </td>
+                    <td>
+                        <%= item.member3CollegeIdCardLink %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+        <% } else { %>
+            <p>No data available</p>
+            <% } %>
+</body>
+
+</html>

@@ -169,106 +169,79 @@ const Register = () => {
 
     const suffix = ['st', 'nd', 'rd', 'th', 'th(Integrated)'];
 
+    const validationErrorsExist = () => {
+        return (
+            passwordErrorMember1 ||
+            passwordErrorMember2 ||
+            passwordErrorMember3
+        );
+    }
+
     const collectData = async (e) => {
         e.preventDefault();
 
-        if (!validation()) {
+        if (validationErrorsExist() || !validation()) {
             console.log('Form validation failed');
             return;
         } else {
-            // const existuseremail = await checkEmail();
-            // if (!existuseremail) {
-            // }
 
             try {
-                    let result = await fetch('https://osdhack-23.onrender.com/', {
-                        method: 'post',
-                        body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
+                let result = await fetch('http://localhost:8000/', {
+                    method: 'post',
+                    body: JSON.stringify({ teamName, teamLeaderName, personalEmailTeamLeader, teamLeaderContactNumber, teamLeaderCollege, teamLeaderYear, teamLeaderCollegeIdCardLink, member1Name, member1Email, member1ContactNumber, member1College, member1Year, member1CollegeIdCardLink, member2Name, member2Email, member2ContactNumber, member2College, member2Year, member2CollegeIdCardLink, member3Name, member3Email, member3ContactNumber, member3College, member3Year, member3CollegeIdCardLink }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
+                const resultData = await result.json();
+                console.log(resultData);
 
-                    const resultData = await result.json();
-                    console.log(resultData);
+                setteamName("");
+                setteamLeaderName("");
+                setpersonalEmailTeamLeader("");
+                setteamLeaderContactNumber("");
+                setteamLeaderCollege("");
+                setteamLeaderYear("");
+                setteamLeaderCollegeIdCardLink("");
+                setmember1Name("");
+                setmember1Email("");
+                setmember1ContactNumber("");
+                setmember1College("");
+                setmember1Year("");
+                setmember1CollegeIdCardLink("");
+                setmember2Name("");
+                setmember2Email("");
+                setmember2ContactNumber("");
+                setmember2College("");
+                setmember2Year("");
+                setmember2CollegeIdCardLink("");
+                setmember3Name("");
+                setmember3Email("");
+                setmember3ContactNumber("");
+                setmember3College("");
+                setmember3Year("");
+                setmember3CollegeIdCardLink("");
+                seterror("");
 
-                    setteamName("");
-                    setteamLeaderName("");
-                    setpersonalEmailTeamLeader("");
-                    setteamLeaderContactNumber("");
-                    setteamLeaderCollege("");
-                    setteamLeaderYear("");
-                    setteamLeaderCollegeIdCardLink("");
-                    setmember1Name("");
-                    setmember1Email("");
-                    setmember1ContactNumber("");
-                    setmember1College("");
-                    setmember1Year("");
-                    setmember1CollegeIdCardLink("");
-                    setmember2Name("");
-                    setmember2Email("");
-                    setmember2ContactNumber("");
-                    setmember2College("");
-                    setmember2Year("");
-                    setmember2CollegeIdCardLink("");
-                    setmember3Name("");
-                    setmember3Email("");
-                    setmember3ContactNumber("");
-                    setmember3College("");
-                    setmember3Year("");
-                    setmember3CollegeIdCardLink("");
-                    seterror("");
+                setSuccessMessage("Form Submitted Successfully!");
 
-                    setSuccessMessage("Form Submitted Successfully!");
+                setTimeout(() => {
+                    setSuccessMessage("");
+                }, 10000);
 
-                    setTimeout(() => {
-                        setSuccessMessage("");
-                    }, 10000);
-
-                } catch (error) {
-                    console.error('Error submitting data:', error);
-                };
+            } catch (error) {
+                console.error('Error submitting data:', error);
+            };
         }
     }
-
-    // const checkEmail = async () => {
-    //     try {
-    //         const response = await fetch('http://localhost:8000/checkEmail', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ personalEmailTeamLeader, member1Email, member2Email, member3Email }),
-    //         });
-
-    //         const data = await response.json();
-    //         console.log(data);
-
-    //         if (data.exists) {
-    //             seterror(data.errorMessage);
-
-    //             setTimeout(() => {
-    //                 seterror("");
-    //             }, 5000);
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-
-
-    //     } catch (error) {
-    //         console.error('Error checking email:', error);
-    //         return false;
-    //     }
-    // };
 
     const handlechange1 = (e) => {
         setmember1Email(e.target.value);
 
-        if(e.target.value === personalEmailTeamLeader){
+        if (e.target.value === personalEmailTeamLeader) {
             setpasswordErrorMember1("Member 1 Email is Same Email As Team Leader");
-        }else{
+        } else {
             setpasswordErrorMember1("");
         }
     }
@@ -276,9 +249,9 @@ const Register = () => {
     const handlechange2 = (e) => {
         setmember2Email(e.target.value);
 
-        if(e.target.value === personalEmailTeamLeader || e.target.value === member1Email){
+        if (e.target.value === personalEmailTeamLeader || e.target.value === member1Email) {
             setpasswordErrorMember2("Member 2 Email is Same Email Another Team Member");
-        }else{
+        } else {
             setpasswordErrorMember2("");
         }
     }
@@ -286,9 +259,9 @@ const Register = () => {
     const handlechange3 = (e) => {
         setmember3Email(e.target.value);
 
-        if(e.target.value === personalEmailTeamLeader || e.target.value === member1Email || e.target.value === member2Email){
+        if (e.target.value === personalEmailTeamLeader || e.target.value === member1Email || e.target.value === member2Email) {
             setpasswordErrorMember3("Member 3 Email is Same Email Another Team Member");
-        }else{
+        } else {
             setpasswordErrorMember3("");
         }
     }
@@ -298,6 +271,9 @@ const Register = () => {
                 <div className="leaderdetail">
                     {error && <div className='errormessage'>{error}</div>}
                     {SuccessMessage && <div className='successmessage'>{SuccessMessage}</div>}
+                    {passwordErrorMember1 && <div className='errormessage'>{passwordErrorMember1}</div>}
+                    {passwordErrorMember2 && <div className='errormessage'>{passwordErrorMember2}</div>}
+                    {passwordErrorMember3 && <div className='errormessage'>{passwordErrorMember3}</div>}
 
                     <div className='memberheading'>TEAM LEADER DETAILS</div>
                     <div className="form-group">
@@ -374,7 +350,7 @@ const Register = () => {
                         <input type="email" className="form-control" id="member1Email" placeholder="Enter Member 1 Mail:"
                             value={member1Email}
                             onChange={handlechange1} />
-                    {passwordErrorMember1 && <div className='errormessage'>{passwordErrorMember1}</div>}
+                        {passwordErrorMember1 && <div className='errormessage'>{passwordErrorMember1}</div>}
 
                     </div>
 
@@ -529,4 +505,4 @@ const Register = () => {
     )
 }
 
-export default Register;    
+export default Register;
