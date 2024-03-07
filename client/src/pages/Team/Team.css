@@ -1,0 +1,81 @@
+.memberHeading {
+    text-align: center;
+    font-size: 3rem;
+    margin: 2%;
+    font-weight: 500;
+}
+
+.teamsection{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.member-card {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(11, 10, 10, 0.8);
+    border-radius: 4%;
+    margin: 2%;
+}
+
+.card-content {
+    padding: 5%;
+    text-align: center;
+    transition: transform 1s ease-in-out;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+}
+
+.member-name {
+    color: #fff;
+    font-size: 1.6em;
+}
+
+.member-role {
+    color: #c9c7c7;
+    margin-bottom: 3%;
+}
+
+
+.social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.9rem;
+}
+
+.social-icons div {
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.social-icons div a {
+    color: rgb(22, 114, 227);
+}
+
+.social-icons div:hover {
+    color: rgb(8, 78, 182);
+    transform: scale(1.5);
+}
+
+.member-detail {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+}
+
+.card-content:hover {
+    transform: scale(1.03);
+}
+
+.member-card:hover .member-detail {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-110%);
+}
+
