@@ -1,5 +1,8 @@
 import React from 'react';
 import './Footer.css';
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -24,9 +27,9 @@ function Footer() {
         <div className="footer-social">
           <h3>Find Us here</h3>
           <div className="social-icons">
-            <a href=""><i className="fa-brands fa-facebook"></i></a>
-            <a href=""><i className="fa-brands fa-linkedin"></i></a>
-            <a href=""><i className="fa-brands fa-instagram"></i></a>
+            <a href=""><FaGithub /></a>
+            <a href=""><FaLinkedin /></a>
+            <a href=""><FaInstagramSquare /></a>
           </div>
         </div>
       </div>

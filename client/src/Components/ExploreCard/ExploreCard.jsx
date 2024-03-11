@@ -28,7 +28,7 @@ const ExploreCard = () => {
         <div className="card">
           <Link to="/register">
             <div className="content">
-              <h2 className="title">REGISTER</h2>
+              <h2 className="title registertitle">REGISTER</h2>
             </div>
           </Link>
         </div>

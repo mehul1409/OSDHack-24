@@ -3,7 +3,9 @@ import logo from '../../assets/exploreProgramme1.png'
 const Timeline = () => {
     return (
         <>
-            <div className="timeline-heading">TIMELINE</div>
+           <div className="timelinesection grid-bg ba-grid anim">
+            <div class="inner"></div>
+           <div className="timeline-heading">TIMELINE</div>
             <div className="timeline">
                 <div className="container left-container">
                     <img src={logo} alt="" />
@@ -51,6 +53,7 @@ const Timeline = () => {
                     </div>
                 </div>
             </div>
+           </div>
         </>
     )
 }

@@ -23,7 +23,7 @@ const Homepage = ({ openMyComponent }) => {
                         <div className="line"></div>
                         <div className="line"></div>
                     </div>
-                    <div className="clubName" id="osdc">OSDC</div>
+                    <div className="clubName" id="osdc">OSDHack</div>
                     <div
                         className={`navbar-items ${isMobileMenuOpen ? "mobilemenu" : ""}`}
                     >
